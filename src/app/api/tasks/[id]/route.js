@@ -23,7 +23,7 @@ export async function PUT(req, { params }) {
       },
       data: data,
     });
-    return NextResponse.json(taskUpdated);
+    return NextResponse.json("Se actualizó correctamente la tarea");
   } catch (error) {
     return NextResponse.json("No se pudo actualizar la tarea seleccionada");
   }
