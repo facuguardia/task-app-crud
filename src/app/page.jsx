@@ -5,6 +5,8 @@ async function tasks() {
   return await prisma.task.findMany();
 }
 
+export const revalidate = 60;
+
 async function HomePage() {
   const tasksList = await tasks();
   return (
