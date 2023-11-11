@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { RiEditFill, RiDeleteBin2Fill } from "react-icons/ri";
 
 function NewTask({ params }) {
   const [title, setTitle] = useState("");
@@ -48,8 +49,17 @@ function NewTask({ params }) {
     router.push("/");
   }
 
+  async function handleDelete() {
+    const res = await fetch(`/api/tasks/${params.id}`, { method: "DELETE" });
+    const data = await res.json();
+    console.log(data);
+
+    router.refresh();
+    router.push("/");
+  }
+
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-start pt-24">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col justify-center gap-4 bg-gray-800 p-12 rounded-md"
@@ -57,7 +67,7 @@ function NewTask({ params }) {
         <input
           type="text"
           id="title"
-          className="w-full h-full text-black py-2 px-3 rounded-lg"
+          className="w-full h-full text-black font-medium py-2 px-3 rounded-lg border-black shadow-lg"
           placeholder="Título"
           onChange={(e) => {
             setTitle(e.target.value);
@@ -66,9 +76,9 @@ function NewTask({ params }) {
         />
 
         <textarea
-          name=""
+          rows="5"
           id="description"
-          className="w-full h-full text-black py-2 px-3 rounded-lg"
+          className="text-black font-medium py-2 px-3 rounded-lg border-black shadow-lg"
           placeholder="Detalle"
           onChange={(e) => {
             setDescription(e.target.value);
@@ -76,9 +86,25 @@ function NewTask({ params }) {
           value={description}
         ></textarea>
 
-        <button className="bg-green-500 text-black font-medium w-full h-full py-2 px-3 rounded-full">
-          Crear
-        </button>
+        {!params.id && (
+          <button className="bg-green-500 hover:bg-green-400 cursor-pointer transition-all duration-300 text-black font-medium w-full h-full py-2 px-3 rounded-full border-black shadow-md">
+            Crear
+          </button>
+        )}
+
+        {params.id && (
+          <div className="flex justify-between items-center">
+            <button
+              type="submit"
+              className="bg-green-500 hover:bg-green-400 cursor-pointer transition-all duration-300 text-black font-medium py-2 px-6 rounded-full border-black shadow-md"
+            >
+              <RiEditFill />
+            </button>
+            <button type="button" className="bg-red-500 hover:bg-red-400 cursor-pointer transition-all duration-300 text-black font-medium py-2 px-6 rounded-full border-black shadow-md"  onClick={handleDelete}>
+              <RiDeleteBin2Fill />
+            </button>
+          </div>
+        )}
       </form>
     </div>
   );
