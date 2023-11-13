@@ -34,7 +34,7 @@ function NewTask({ params }) {
       const data = res.json();
       console.log("updating: ", data);
     } else {
-      const res = await fetch("http://localhost:3000/api/tasks", {
+      const res = await fetch("/api/tasks", {
         method: "POST",
         body: JSON.stringify({ title, description }),
         headers: {

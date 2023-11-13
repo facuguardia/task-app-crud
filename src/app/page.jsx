@@ -5,7 +5,7 @@ async function tasks() {
   return await prisma.task.findMany();
 }
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic'
 
 async function HomePage() {
   const tasksList = await tasks();
