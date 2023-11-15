@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { BiLogoLinkedinSquare, BiLogoInternetExplorer } from "react-icons/bi";
+import {
+  BiLogoLinkedinSquare,
+  BiLogoInternetExplorer,
+  BiLogoGit,
+} from "react-icons/bi";
 
 function AboutPage() {
   return (
@@ -85,6 +89,13 @@ function AboutPage() {
           className="text-gray-400 text-3xl hover:text-green-500 transition-all duration-300"
         >
           <BiLogoInternetExplorer />
+        </Link>
+        <Link
+          href="https://github.com/facuguardia/task-app-crud"
+          target="_blank"
+          className="text-gray-400 text-3xl hover:text-green-500 transition-all duration-300"
+        >
+          <BiLogoGit />
         </Link>
       </footer>
     </div>

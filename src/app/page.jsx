@@ -16,7 +16,7 @@ async function HomePage() {
           <CardTask task={task} key={task.id} />
         ))
       ) : (
-        <p className="flex justify-center items-center w-screen pt-10 text-2xl font-bold">No hay tareas</p>
+        <p className="grid grid-cols-1 text-center lg:flex lg:justify-center lg:items-center lg:w-screen pt-10 text-2xl font-bold">No hay tareas</p>
       )}
     </div>
   );

@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { RiEditFill, RiDeleteBin2Fill } from "react-icons/ri";
-import { IoCloseCircleSharp } from "react-icons/io5";
+import { IoCloseSharp } from "react-icons/io5";
 
 function NewTask({ params }) {
   const [title, setTitle] = useState("");
@@ -67,12 +67,13 @@ function NewTask({ params }) {
       >
         <div>
           <button
-            className="absolute -top-3 -right-2"
+            type="button"
+            className="absolute top-0 right-0 p-2"
             onClick={() => {
               router.push("/");
             }}
           >
-            <IoCloseCircleSharp className="text-3xl text-gray-400" />
+            <IoCloseSharp className="text-2xl text-gray-950 hover:text-gray-500 transition-all duration-300 shadow-lg " />
           </button>
         </div>
         <input
@@ -104,19 +105,19 @@ function NewTask({ params }) {
         )}
 
         {params.id && (
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center gap-2">
             <button
               type="submit"
-              className="bg-green-500 hover:bg-green-400 cursor-pointer transition-all duration-300 text-black font-medium py-2 px-6 rounded-full border-black shadow-md"
+              className="bg-green-500 hover:bg-green-400 cursor-pointer transition-all duration-300 text-black font-medium py-2 px-6 rounded-full border-black shadow-md w-1/2"
             >
-              <RiEditFill />
+              Editar
             </button>
             <button
               type="button"
-              className="bg-red-500 hover:bg-red-400 cursor-pointer transition-all duration-300 text-black font-medium py-2 px-6 rounded-full border-black shadow-md"
+              className="bg-red-500 hover:bg-red-400 cursor-pointer transition-all duration-300 text-black font-medium py-2 px-6 rounded-full border-black shadow-md w-1/2"
               onClick={handleDelete}
             >
-              <RiDeleteBin2Fill />
+              Eliminar
             </button>
           </div>
         )}
