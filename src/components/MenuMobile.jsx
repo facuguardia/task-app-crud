@@ -1,4 +1,5 @@
 'use client'
+
 import { useState } from "react";
 import Link from "next/link";
 import { RiMenu3Fill, RiCloseFill } from "react-icons/ri";
@@ -17,7 +18,6 @@ function MenuMobile() {
       }`}
     >
       <nav className="h-screen flex flex-col justify-center items-center">
-        {/* Items 1 */}
         <Link
           href="/about"
           className="w-auto h-auto flex justify-start border-b-[1px] border-green-500 px-4 py-3 text-white"
@@ -40,7 +40,7 @@ function MenuMobile() {
       {/* Button Mobile */}
       <button
         onClick={() => setMenu(!menu)}
-        className="lg:hidden fixed right-4 top-4 text-xl p-2.5 rounded-full text-green-500 z-50"
+        className="lg:hidden fixed right-4 top-4 text-2xl p-2.5 rounded-full text-green-500 z-50"
       >
         {menu ? <RiCloseFill /> : <RiMenu3Fill />}
       </button>
