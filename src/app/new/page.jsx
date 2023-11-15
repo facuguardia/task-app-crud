@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { RiEditFill, RiDeleteBin2Fill } from "react-icons/ri";
+import { IoCloseCircleSharp } from "react-icons/io5";
 
 function NewTask({ params }) {
   const [title, setTitle] = useState("");
@@ -34,7 +35,7 @@ function NewTask({ params }) {
       const data = res.json();
       console.log("updating: ", data);
     } else {
-      const res = await fetch('/api/tasks', {
+      const res = await fetch("/api/tasks", {
         method: "POST",
         body: JSON.stringify({ title, description }),
         headers: {
@@ -62,8 +63,18 @@ function NewTask({ params }) {
     <div className="flex justify-center items-start pt-24">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col justify-center gap-4 bg-gray-800 p-12 rounded-md"
+        className="relative flex flex-col justify-center gap-4 bg-gray-800 p-12 rounded-md"
       >
+        <div>
+          <button
+            className="absolute -top-3 -right-2"
+            onClick={() => {
+              router.push("/");
+            }}
+          >
+            <IoCloseCircleSharp className="text-3xl text-gray-400" />
+          </button>
+        </div>
         <input
           type="text"
           id="title"
@@ -100,7 +111,11 @@ function NewTask({ params }) {
             >
               <RiEditFill />
             </button>
-            <button type="button" className="bg-red-500 hover:bg-red-400 cursor-pointer transition-all duration-300 text-black font-medium py-2 px-6 rounded-full border-black shadow-md"  onClick={handleDelete}>
+            <button
+              type="button"
+              className="bg-red-500 hover:bg-red-400 cursor-pointer transition-all duration-300 text-black font-medium py-2 px-6 rounded-full border-black shadow-md"
+              onClick={handleDelete}
+            >
               <RiDeleteBin2Fill />
             </button>
           </div>
